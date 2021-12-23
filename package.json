@@ -1,0 +1,19 @@
+{
+  "name": "middle.messenger.praktikum.yandex-by-metalyx",
+  "version": "1.0.0",
+  "description": "Chat by Metalyx for yandex practicum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metalyx/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "Vitalii Tereshchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metalyx/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/metalyx/middle.messenger.praktikum.yandex#readme"
+}
