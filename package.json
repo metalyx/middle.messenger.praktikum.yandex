@@ -18,5 +18,8 @@
   "homepage": "https://github.com/metalyx/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
     "parcel": "^2.0.1"
+  },
+  "dependencies": {
+    "pug": "^3.0.2"
   }
 }
