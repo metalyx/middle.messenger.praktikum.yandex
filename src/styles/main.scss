@@ -1,0 +1,56 @@
+@import '../styles/normalize.scss';
+@import '../styles/variables/colors.scss';
+@import '../styles/variables/fonts.scss';
+
+.main-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+
+
+  display: flex;
+
+  font-family: 'Inter-Regular';
+
+  .chat-list-wrapper {
+    width: 310px;
+    background-color: $color--light-gray;
+    height: 100%;
+    border-right: 1px solid $color--border-gray;
+
+    .head {
+      width: 100%;
+      height: 100px;
+    }
+
+    .chat-list {
+      width: 100%;
+      height: calc(100% - 100px);
+    }
+  }
+
+  .chat-dialog-wrapper {
+    width: calc(100% - 310px);
+    background-color: $color--white;
+
+    .head {
+      width: calc(100% - 40px);
+      height: 54px;
+      margin: 0 20px;
+      border-bottom: 1px solid $color--border-gray;
+      box-sizing: border-box;
+    }
+
+    .main {
+      width: 100%;
+      height: calc(100% - 54px - 54px);
+    }
+
+    .footer {
+      width: 100%;
+      height: 54px;
+    }
+  }
+
+}

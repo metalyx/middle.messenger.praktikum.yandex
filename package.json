@@ -4,7 +4,10 @@
   "description": "Chat by Metalyx for yandex practicum",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/parcel ./src/pages/index.pug",
+    "build": "./node_modules/.bin/parcel build ./static/index.html",
+    "go": "parcel ./src/pages/*.pug"
   },
   "repository": {
     "type": "git",
@@ -17,9 +20,19 @@
   },
   "homepage": "https://github.com/metalyx/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.0.1",
+    "@parcel/transformer-js": "^2.0.0-nightly.335",
+    "@parcel/transformer-pug": "^2.0.1",
+    "@parcel/transformer-sass": "^2.0.1",
     "parcel": "^2.0.1"
   },
   "dependencies": {
-    "pug": "^3.0.2"
+    "express": "^4.17.2",
+    "pug": "^3.0.2",
+    "fs": "0.0.1-security"
+  },
+  "@parcel/transformer-js": {
+    "inlineFS": true,
+    "inlineEnvironment": true
   }
 }
