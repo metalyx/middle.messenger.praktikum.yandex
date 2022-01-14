@@ -15,6 +15,6 @@ body
         input.input(placeholder='Пароль' type='password' name='password' id='password')
         input.input(placeholder='Пароль(ещё раз)' type='password' name='repeat_password' id='repeat_password')
       div.buttons
-        button.button(id='submit-registration') Зарегестрироваться
+        a(href='main.pug')
+          button.button(id='submit-registration') Зарегестрироваться
         div.no-profile Войти
-  //- script(src='registration.js' type='module')

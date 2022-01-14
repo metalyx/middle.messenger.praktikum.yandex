@@ -2,12 +2,14 @@
   "name": "middle.messenger.praktikum.yandex-by-metalyx",
   "version": "1.0.0",
   "description": "Chat by Metalyx for yandex practicum",
-  "main": "index.js",
+  "engines": {
+    "node": "14.18.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/parcel ./src/pages/index.pug",
-    "build": "./node_modules/.bin/parcel build ./static/index.html",
-    "go": "parcel ./src/pages/*.pug"
+    "dev": "./node_modules/.bin/parcel ./src/pages/*.pug",
+    "build": "./node_modules/.bin/parcel build ./src/pages/*.html",
+    "start": "./node_modules/.bin/parcel build ./src/pages/index.pug && node server.js"
   },
   "repository": {
     "type": "git",

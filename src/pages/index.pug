@@ -1,13 +1,22 @@
 head
   link(rel='stylesheet' href='../styles/normalize.scss')
   style.
+    #root {
+      margin: 10px;
+    }
+
     a {
       display: flex;
       flex-direction: column;
+      border: 1px solid black;
+      margin: 10px 0;
     }
 body
   div#root
+    h1 Сверстанные страницы ниже
     a(href='login.pug') Login
     a(href='registration.pug') Registration
     a(href='main.pug') Chat
-    //- script(src='../index.js' type='module')
+    a(href='notfound.pug') 404 Not Found
+    a(href='badrequest.pug') 5** Bad Request
+    a(href='profile.pug') Profile

@@ -1,0 +1,80 @@
+@import './variables/colors.scss';
+@import './variables/fonts.scss';
+
+.profile-wrapper {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .avatar {
+    display: flex;
+    flex-direction: column;
+
+    .profile-avatar-image {
+      width: 130px;
+      height: 130px;
+
+      background-color: $color--basic-gray;
+      border-radius: 50%;
+    }
+
+    .profile-display-name {
+      margin-top: 21px;
+      align-self: center;
+
+      font-family: 'Inter-Medium';
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+}
+
+.profile-fields, .change-profile {
+  width: 510px;
+  margin-top: 60px;
+
+  ul {
+    display: block;
+
+    li {
+      height: 32px;
+
+      display: flex;
+      justify-content: space-between;
+
+      border-bottom: 1px solid $color--border-gray;
+
+      span {
+        flex-grow: 1;
+
+        display: flex;
+        align-items: center;
+
+        font-size: 13px;
+        line-height: 13px;
+      }
+
+      input {
+        text-align: right;
+        flex-grow: 2;
+      }
+    }
+
+    span:last-child {
+      border: none;
+    }
+
+    span.color-blue {
+      color: $color--blue;
+    }
+
+    span.color-red {
+      color: $color--red;
+    }
+  }
+}
