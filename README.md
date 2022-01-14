@@ -6,7 +6,7 @@
 
 Посмотреть проект можно здесь: [Netlify](https://wonderful-mayer-44e72d.netlify.app/).
 
-Использовался макет, предоставленный Яндексом: [Figma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1)
+Использовался макет, предоставленный Яндексом: [Figma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1).
 
 ## Установка
 

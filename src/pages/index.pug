@@ -1,23 +1,26 @@
 head
   link(rel='stylesheet' href='../styles/normalize.scss')
-  style.
-    #root {
-      margin: 10px;
-    }
-
-    a {
-      display: flex;
-      flex-direction: column;
-      border: 1px solid black;
-      margin: 10px 0;
-    }
+  link(rel='stylesheet' href='../styles/index.scss')
 body
   div#root
       h1 Сверстанные страницы ниже
-      main
-        a(href='login.pug') Login
-        a(href='registration.pug') Registration
-        a(href='main.pug') Chat
-        a(href='notfound.pug') 404 Not Found
-        a(href='badrequest.pug') 5** Bad Request
-        a(href='profile.pug') Profile
+      nav.nav-index
+        ul
+          li
+            button
+              a(href='login.pug') Login
+          li
+            button
+              a(href='registration.pug') Registration
+          li
+            button
+              a(href='main.pug') Chat
+          li
+            button
+              a(href='notfound.pug') 404 Not Found
+          li
+            button
+              a(href='badrequest.pug') 5** Bad Request
+          li
+            button
+              a(href='profile.pug') Profile

@@ -16,6 +16,7 @@ body
           input.input(placeholder='Пароль' type='password' name='password' id='password')
           input.input(placeholder='Пароль(ещё раз)' type='password' name='repeat_password' id='repeat_password')
         div.buttons
-          a(href='main.pug')
-            button.button(id='submit-registration') Зарегестрироваться
-          div.no-profile Войти
+          button.button(id='submit-registration')
+            a(href='main.pug') Зарегестрироваться
+          div.no-profile
+            a(href='') Войти

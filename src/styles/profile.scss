@@ -1,13 +1,11 @@
-@import './variables/colors.scss';
-@import './variables/fonts.scss';
+@import "../styles/normalize.scss";
+@import "../styles/variables/all.scss";
 
 .profile-wrapper {
   width: 100vw;
   height: 100vh;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex--center;
   flex-direction: column;
 
   .avatar {
