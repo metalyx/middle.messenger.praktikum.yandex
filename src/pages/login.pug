@@ -4,12 +4,13 @@ body
   section.login-page
     div.login-page-wrapper
       div.title Вход
-      form(name='loginForm', id='login-form', onsubmit="validateMyForm();")
-        div.inputs
-          input.input(placeholder='Логин' type='text' name='login' id='login')
-          input.input(placeholder='Пароль' type='password' name='password' id='password')
-        div.buttons
-          a(href='main.pug')
-            button.button(type='button' id='submit-login') Авторизоваться
-          div.no-profile
-            a(href='') Нет аккаунта?
+      main
+        form(name='loginForm', id='login-form', onsubmit="validateMyForm();")
+          div.inputs
+            input.input(placeholder='Логин' type='text' name='login' id='login')
+            input.input(placeholder='Пароль' type='password' name='password' id='password')
+          div.buttons
+            a(href='main.pug')
+              button.button(type='button' id='submit-login') Авторизоваться
+            div.no-profile
+              a(href='') Нет аккаунта?

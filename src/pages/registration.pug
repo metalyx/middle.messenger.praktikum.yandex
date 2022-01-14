@@ -6,15 +6,16 @@ body
   section.login-page.registration-section
     div.login-page-wrapper.registration-wrapper
       div.title Регистрация
-      div.inputs
-        input.input(placeholder='Почта' type='email' name='email' id='email')
-        input.input(placeholder='Логин' type='login' name='login' id='login')
-        input.input(placeholder='Имя' type='text' name='first_name' id='first_name')
-        input.input(placeholder='Фамилия' type='text' name='second_name' id='second_name')
-        input.input(placeholder='Телефон' type='phone' name='phone' id='phone')
-        input.input(placeholder='Пароль' type='password' name='password' id='password')
-        input.input(placeholder='Пароль(ещё раз)' type='password' name='repeat_password' id='repeat_password')
-      div.buttons
-        a(href='main.pug')
-          button.button(id='submit-registration') Зарегестрироваться
-        div.no-profile Войти
+      main
+        div.inputs
+          input.input(placeholder='Почта' type='email' name='email' id='email')
+          input.input(placeholder='Логин' type='login' name='login' id='login')
+          input.input(placeholder='Имя' type='text' name='first_name' id='first_name')
+          input.input(placeholder='Фамилия' type='text' name='second_name' id='second_name')
+          input.input(placeholder='Телефон' type='phone' name='phone' id='phone')
+          input.input(placeholder='Пароль' type='password' name='password' id='password')
+          input.input(placeholder='Пароль(ещё раз)' type='password' name='repeat_password' id='repeat_password')
+        div.buttons
+          a(href='main.pug')
+            button.button(id='submit-registration') Зарегестрироваться
+          div.no-profile Войти
