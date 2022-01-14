@@ -1,3 +1,5 @@
+Ссылка на PULL REQUEST 1 sprint: https://github.com/metalyx/middle.messenger.praktikum.yandex/pull/3
+
 ## Описание
 
 Этот репозиторий и код в нём - учебная проектная работа первого модуля Yandex Practicum. Представляет собой мессенджер.
