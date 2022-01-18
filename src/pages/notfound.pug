@@ -1,9 +1,8 @@
+include doctype.pug
 head
-   link(rel='stylesheet' href='../styles/normalize.scss')
-   style.
-    .not-found-wrapper {
-      margin: 10px;
-    }
+  include headtemplate.pug
+  link(rel='stylesheet' href='../styles/normalize.scss')
+  link(rel='stylesheet' href='../styles/notfound.scss')
 body
   main
     .not-found-wrapper
