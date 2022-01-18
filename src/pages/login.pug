@@ -1,0 +1,18 @@
+include doctype.pug
+head
+  include headtemplate.pug
+  link(rel='stylesheet' href='../styles/login.scss')
+body
+  section.login-page
+    div.login-page-wrapper
+      div.title Вход
+      main
+        form(name='loginForm', id='login-form', onsubmit="validateMyForm();")
+          div.inputs
+            input.input(placeholder='Логин' type='text' name='login' id='login')
+            input.input(placeholder='Пароль' type='password' name='password' id='password')
+          div.buttons
+            button.button(type='button' id='submit-login')
+              a(href='main.pug') Авторизоваться
+            div.no-profile
+              a(href='') Нет аккаунта?

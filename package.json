@@ -1,0 +1,41 @@
+{
+  "name": "middle.messenger.praktikum.yandex-by-metalyx",
+  "version": "1.0.0",
+  "description": "Chat by Metalyx for yandex practicum",
+  "engines": {
+    "node": ">=12.22.9 <14.18.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/parcel ./src/pages/*.pug",
+    "build": "./node_modules/.bin/parcel build ./src/pages/index.pug",
+    "start": "./node_modules/.bin/parcel build ./src/pages/index.pug && node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metalyx/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "Vitalii Tereshchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/metalyx/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/metalyx/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.0.1",
+    "@parcel/transformer-js": "^2.0.0-nightly.335",
+    "@parcel/transformer-pug": "^2.0.1",
+    "@parcel/transformer-sass": "^2.0.1",
+    "parcel": "^2.0.1",
+    "@parcel/core": "^2.2.1",
+    "postcss": "^8.3.11"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "pug": "^3.0.2"
+  },
+  "@parcel/transformer-js": {
+    "inlineFS": true,
+    "inlineEnvironment": true
+  }
+}

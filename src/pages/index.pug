@@ -1,0 +1,28 @@
+include doctype.pug
+head
+  include headtemplate.pug
+  link(rel='stylesheet' href='../styles/normalize.scss')
+  link(rel='stylesheet' href='../styles/index.scss')
+body
+  div#root
+      h1 Сверстанные страницы ниже
+      nav.nav-index
+        ul
+          li
+            button
+              a(href='login.pug') Login
+          li
+            button
+              a(href='registration.pug') Registration
+          li
+            button
+              a(href='main.pug') Chat
+          li
+            button
+              a(href='notfound.pug') 404 Not Found
+          li
+            button
+              a(href='badrequest.pug') 5** Bad Request
+          li
+            button
+              a(href='profile.pug') Profile
