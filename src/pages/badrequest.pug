@@ -1,6 +1,8 @@
+include doctype.pug
 head
-   link(rel='stylesheet' href='../styles/normalize.scss')
-   link(rel='stylesheet' href='../styles/badrequest.scss')
+  include headtemplate.pug
+  link(rel='stylesheet' href='../styles/normalize.scss')
+  link(rel='stylesheet' href='../styles/badrequest.scss')
 body
   main
     .bad-request-wrapper
