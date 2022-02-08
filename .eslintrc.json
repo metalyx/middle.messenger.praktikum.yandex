@@ -7,7 +7,7 @@
   "rules": {
     "max-len": [
       2,
-      100
+      140
     ],
     "linebreak-style": "off",
     "no-unused-vars": "warn",

@@ -32,6 +32,11 @@ const ANCHORS_DATA = [
     text: '5** page',
     className: '',
   },
+  {
+    href: 'changepassword.html',
+    text: 'Change password',
+    className: '',
+  },
 ];
 
 const signIn = new IndexPage({

@@ -25,10 +25,7 @@ function serializeForm(formNode: HTMLFormElement): any {
 }
 
 export function submitForm(event: Event): void {
-  // 1- prevent form default behaviour
   event.preventDefault();
-
-  // 2 - gather inputs data
   const data = serializeForm(event.target);
   console.log('form data=', data);
 }
