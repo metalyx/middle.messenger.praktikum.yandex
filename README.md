@@ -6,6 +6,8 @@
 
 **На данный момент** проект представляет из себя несколько страниц, генерируемых на клиенте. В качестве шаблонизатора - [PUG](https://pugjs.org/api/getting-started.html). 
 
+Внедрены TypeScript, Eslint, Stylelint.
+
 Посмотреть проект можно здесь: [Netlify](https://6206aa8644619b2a4b916a00--wonderful-mayer-44e72d.netlify.app/).
 
 Использовался макет, предоставленный Яндексом: [Figma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1).
