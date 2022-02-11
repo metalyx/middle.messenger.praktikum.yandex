@@ -6,11 +6,8 @@
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
-
-
   display: flex;
-
-  font-family: 'Inter-Regular';
+  font-family: Inter-Regular;
 
   .chat-list-wrapper {
     width: 310px;
@@ -48,12 +45,12 @@
         background-color: $color--basic-gray;
         border-radius: 5px;
         height: 32px;
-
         font-size: 12px;
-        font-family: 'Inter-Regular';
+        font-family: Inter-Regular;
         color: $color--gray-main;
-        
+
         @include flex--center;
+
         cursor: pointer;
       }
     }
@@ -76,7 +73,6 @@
           margin-left: 10px;
           border-top: 1px solid $color--border-gray;
           cursor: pointer;
-
           animation-name: unhover;
           animation-duration: 0.2s;
           animation-fill-mode: forwards;
@@ -105,7 +101,7 @@
             width: 193px;
 
             .dialog-main-name {
-              font-family: 'Inter-Regular';
+              font-family: Inter-Regular;
               font-style: normal;
               font-weight: 600;
               font-size: 13px;
@@ -113,7 +109,7 @@
             }
 
             .dialog-main-message {
-              font-family: 'Inter-Regular';
+              font-family: Inter-Regular;
               font-style: normal;
               font-weight: 500;
               font-size: 12px;
@@ -132,7 +128,7 @@
             margin-top: 12px;
 
             .dialog-last-time {
-              font-family: 'Inter-Regular';
+              font-family: Inter-Regular;
               font-style: normal;
               font-weight: 500;
               font-size: 11px;
@@ -147,14 +143,12 @@
               height: 20px;
               border-radius: 100%;
               margin-top: 14px;
-
-              font-family: 'Inter-Regular';
+              font-family: Inter-Regular;
               font-style: normal;
               font-weight: 500;
               font-size: 11px;
               line-height: 12px;
               text-align: center;
-
               display: flex;
               justify-content: center;
               align-items: center;
@@ -213,19 +207,17 @@
       .chat-name {
         margin: auto 0;
         margin-left: 10px;
-
-        font-family: 'Inter-Regular';
+        font-family: Inter-Regular;
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
         line-height: 13px;
         color: $color--black-special;
-
         display: flex;
         align-items: center;
         justify-content: flex-start;
         width: calc(100% - 70px);
-        
+
         span {
           cursor: pointer;
         }
@@ -233,6 +225,7 @@
 
       .chat-settings {
         @include flex--center;
+
         cursor: pointer;
       }
 
@@ -250,10 +243,11 @@
       overflow: scroll;
       display: flex;
       flex-direction: column;
-      font-family: 'Inter-Medium';
+      font-family: Inter-Medium;
 
       .no-messages {
         @include flex--center;
+
         height: 76vh;
       }
 
@@ -261,6 +255,7 @@
         max-width: 60vw;
         min-width: 100px;
         display: flex;
+
         // flex-direction: column;
         box-sizing: border-box;
         margin-left: 20px;
@@ -270,22 +265,23 @@
           display: block;
           padding: 11px;
           background-color: $color--gray-message;
-          border-radius: 12px 12px 0px 12px;
+          border-radius: 12px 12px 0;
           font-size: 12px;
           line-height: 15px;
           width: fit-content;
+
           img {
             max-width: 495px;
-            border-radius: 12px 12px 0px 12px;
+            border-radius: 12px 12px 0;
           }
         }
 
         span.time-span {
           z-index: 998;
           align-self: flex-end;
-          background: rgba(82, 82, 82, 0.5);
+          background: rgb(82 82 82 / 50%);
           color: $color--white;
-          font-family: 'Inter-Regular';
+          font-family: Inter-Regular;
           font-style: normal;
           font-weight: 500;
           font-size: 9px;
@@ -293,8 +289,10 @@
           text-align: right;
           width: 37px;
           height: 13px;
+
           @include flex--center;
-          border-radius: 30px 30px 30px 0px;
+
+          border-radius: 30px 30px 30px 0;
         }
 
         span.no-bc {
@@ -321,23 +319,24 @@
           display: block;
           padding: 11px;
           background-color: $color--blue;
-          border-radius: 12px 12px 12px 0px;
+          border-radius: 12px 12px 12px 0;
           font-size: 12px;
           line-height: 15px;
           color: $color--white;
           width: fit-content;
+
           img {
             max-width: 495px;
-            border-radius: 12px 12px 12px 0px;
+            border-radius: 12px 12px 12px 0;
           }
         }
 
         span.time-span {
           z-index: 998;
           align-self: flex-end;
-          background: rgba(82, 82, 82, 0.5);
+          background: rgb(82 82 82 / 50%);
           color: $color--white;
-          font-family: 'Inter-Regular';
+          font-family: Inter-Regular;
           font-style: normal;
           font-weight: 500;
           font-size: 9px;
@@ -345,8 +344,10 @@
           text-align: right;
           width: 37px;
           height: 13px;
+
           @include flex--center;
-          border-radius: 30px 30px 0px 30px;
+
+          border-radius: 30px 30px 0;
         }
 
         span.no-bc {
@@ -368,7 +369,6 @@
     .footer {
       width: calc(100% - 40px);
       margin-left: 20px;
-      
       height: 54px;
       border-top: 1px solid $color--border-gray;
       display: flex;
@@ -379,7 +379,7 @@
 
       .footer-add-file::after {
         content: '+';
-        font-family: 'Inter-Regular';
+        font-family: Inter-Regular;
         font-size: 24px;
         line-height: 32px;
         color: $color--gray-main;
@@ -398,7 +398,7 @@
           padding-left: 20px;
           display: flex;
           align-items: center;
-          font-family: 'Inter-Regular';
+          font-family: Inter-Regular;
           font-size: 12px;
         }
       }
@@ -409,9 +409,12 @@
         margin-top: 10px;
         border-radius: 100%;
         background-color: $color--blue;
+
         @include flex--center;
+
         cursor: pointer;
       }
+
       .footer-send::after {
         content: '\2794';
         font-size: 18px;
@@ -419,7 +422,6 @@
       }
     }
   }
-
 }
 
 @keyframes hover {
@@ -431,7 +433,7 @@
 
   100% {
     background-color: $color--gray;
-    transform: scale(0.93) ;
+    transform: scale(0.93);
     z-index: 999;
   }
 }
