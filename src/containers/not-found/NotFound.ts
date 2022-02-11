@@ -8,7 +8,7 @@ class NotFound extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(notFoundTemplate, this.props);
   }
 }
@@ -20,5 +20,5 @@ const notFoundPage = new NotFound({
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(notFoundPage.render());
+  app.appendChild(notFoundPage.getContent());
 }

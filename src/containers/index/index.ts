@@ -37,6 +37,11 @@ const ANCHORS_DATA = [
     text: 'Change password',
     className: '',
   },
+  {
+    href: 'requests.html',
+    text: 'Test HTTP Transport',
+    className: '',
+  },
 ];
 
 const signIn = new IndexPage({
@@ -46,5 +51,5 @@ const signIn = new IndexPage({
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(signIn.render());
+  app.appendChild(signIn.getContent());
 }

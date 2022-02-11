@@ -8,7 +8,7 @@ class ErrorPage extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(errorPageTemplate, this.props);
   }
 }
@@ -20,5 +20,5 @@ const errorPage = new ErrorPage({
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(errorPage.render());
+  app.appendChild(errorPage.getContent());
 }

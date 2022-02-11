@@ -6,7 +6,7 @@ export default class Button extends Block {
     super('button', props);
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(buttonTemplate, this.props);
   }
 }

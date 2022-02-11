@@ -1,4 +1,4 @@
-import { validateInput } from "../../../utils/helpers/validate";
+import { validateInput } from '../../../utils/helpers/validate';
 
 const FIELD_DISPLAY_NAME_PROPS = {
   id: 'display_name',

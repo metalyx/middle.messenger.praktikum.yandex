@@ -7,7 +7,7 @@ class ChatHead extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(chatHeadTemplate, this.props);
   }
 }

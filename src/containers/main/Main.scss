@@ -73,9 +73,6 @@
           margin-left: 10px;
           border-top: 1px solid $color--border-gray;
           cursor: pointer;
-          animation-name: unhover;
-          animation-duration: 0.2s;
-          animation-fill-mode: forwards;
 
           .dialog-avatar {
             width: 47px;
@@ -255,8 +252,6 @@
         max-width: 60vw;
         min-width: 100px;
         display: flex;
-
-        // flex-direction: column;
         box-sizing: border-box;
         margin-left: 20px;
         margin-bottom: 10px;

@@ -7,7 +7,7 @@ class NoMessages extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(templateNoMessages, this.props);
   }
 }

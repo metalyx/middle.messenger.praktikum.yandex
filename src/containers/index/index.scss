@@ -1,9 +1,13 @@
-@import '../../styles/variables/colors.scss';
+@import '../../styles/variables/all.scss';
 
 .index__wrapper {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
+  font-family: Inter-Regular;
+  height: 98vh;
+
+  @include flex--center;
 
   a {
     display: block;
@@ -12,5 +16,7 @@
     padding: 18px;
     margin: 10px 0;
     text-align: center;
+    width: 200px;
+    text-decoration: none;
   }
 }

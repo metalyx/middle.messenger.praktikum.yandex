@@ -16,7 +16,7 @@ class ChangePasswords extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(changePasswordsTemplate, this.props);
   }
 }
@@ -44,5 +44,5 @@ const changePasswordsPage = new ChangePasswords(pageProps);
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(changePasswordsPage.render());
+  app.appendChild(changePasswordsPage.getContent());
 }

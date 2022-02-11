@@ -25,7 +25,7 @@ class SignIn extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(signInPageTemplate, this.props);
   }
 }
@@ -43,5 +43,5 @@ const signInPage = new SignIn({ title: 'Авторизация', form: formLogin
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(signInPage.render());
+  app.appendChild(signInPage.getContent());
 }

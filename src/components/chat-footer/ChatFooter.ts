@@ -7,7 +7,7 @@ class ChatFooter extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(chatFooterTemplate, this.props);
   }
 }

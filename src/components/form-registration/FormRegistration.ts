@@ -6,7 +6,7 @@ class FormRegistration extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(formTemplate, this.props);
   }
 }

@@ -7,7 +7,7 @@ class Dialog extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(templateDialog, this.props);
   }
 }

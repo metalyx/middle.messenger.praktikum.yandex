@@ -7,7 +7,7 @@ class ListItem extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(templateListItem, this.props);
   }
 }

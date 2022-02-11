@@ -26,7 +26,7 @@ class Registration extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(registrationTemplate, this.props);
   }
 }
@@ -50,5 +50,5 @@ const registrationPage = new Registration({
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(registrationPage.render());
+  app.appendChild(registrationPage.getContent());
 }

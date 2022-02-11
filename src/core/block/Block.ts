@@ -1,13 +1,12 @@
+/* eslint-disable no-use-before-define */
 import { v4 as uuidv4 } from 'uuid';
 import EventBus from '../event-bus/EventBus';
+import deepEqual from '../../utils/helpers/deepEqual';
 
-/* props schema */
 export interface IProps {
-  events?: { [key: string]: (event: Event) => void }
+  // eslint-disable-next-line no-unused-vars
+  events?: { [key: string]: (e?: Event) => void }
   childrenList?: Block[]
-  classes?: string[]
-  text?: string
-  type?: string
   [index: string]: any
 }
 
@@ -15,8 +14,7 @@ interface IChildrenSimple { [childName: string]: Block }
 interface IChildrenList { childrenList?: Block[] }
 type IChildren = IChildrenSimple & IChildrenList
 
-export abstract class Block {
-  /* class properties */
+export class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -28,15 +26,14 @@ export abstract class Block {
 
   readonly _meta: { tagName: string, propsAndChildren: IProps };
 
-  readonly _id: string;
-
   readonly props: IProps;
 
   readonly children: IChildren;
 
+  readonly _id: string;
+
   readonly eventBus: () => EventBus;
 
-  /* constructor */
   constructor(tagName = 'div', propsAndChildren: IProps) {
     const eventBus = new EventBus();
     this._meta = { tagName, propsAndChildren };
@@ -49,12 +46,10 @@ export abstract class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  /* getters */
   get element(): HTMLElement | undefined {
     return this._element;
   }
 
-  /* private methods */
   private _getChildren(propsAndChildren: IProps): IProps {
     const children: IProps = {};
     const props: IProps = {};
@@ -91,6 +86,8 @@ export abstract class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
+  public init(): void { }
+
   private _componentDidMount(): void {
     this.componentDidMount();
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -106,6 +103,12 @@ export abstract class Block {
     });
   }
 
+  public componentDidMount(): void { }
+
+  public dispatchComponentDidMount(): void {
+    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+  }
+
   private _componentDidUpdate(oldIProps: IProps, newIProps: IProps): void {
     const response = this.componentDidUpdate(oldIProps, newIProps);
     if (!response) {
@@ -114,39 +117,41 @@ export abstract class Block {
     this._render();
   }
 
-  private _render(): void {
-    // const block = this.render() as unknown as Element;
-
-    // if (block !== undefined) {
-    //   const tgt = document.querySelector(`[data-id="${this._element.getAttribute('data-id')!}"]`);
-    //   if (tgt === null) {
-    //     this._element.innerHTML = '';
-    //     this._element.appendChild(block);
-    //   } else {
-    //     block.firstElementChild!.setAttribute('data-id', tgt.getAttribute('data-id')!);
-    //     tgt.parentNode?.replaceChild(block, tgt);
-    //   }
-    //   this._addEvents(); // add new event handlers
-    // }
-    const fragment = this.render();
-
-    this._removeEvents();
-    this._element.innerHTML = '';
-
-    this._element.appendChild(fragment);
-    this._addEvents();
+  public componentDidUpdate(oldProps: IProps, newProps: IProps): boolean {
+    if (deepEqual(oldProps, newProps) === false) {
+      return true;
+    }
+    return false;
   }
+
+  private _render(): void {
+    const block = this.render() as unknown as Element;
+
+    if (block !== undefined) {
+      const target = document.querySelector(`[data-id="${this._element.getAttribute('data-id')!}"]`);
+      if (target === null) {
+        this._element.innerHTML = '';
+        this._element.appendChild(block);
+      } else {
+        block.firstElementChild!.setAttribute('data-id', target.getAttribute('data-id')!);
+        target.parentNode?.replaceChild(block, target);
+      }
+      this._addEvents();
+    }
+  }
+
+  public render(): void { }
 
   private _addEvents(): void {
     const { events = {} } = this.props;
 
     Object.entries(events).forEach(([eventName, evt]) => {
       const id = this._element.getAttribute('data-id');
-      const tgt = document.querySelector(`[data-id="${id!}"]`);
+      const target = document.querySelector(`[data-id="${id!}"]`);
 
-      const target = tgt === null ? this._element.firstElementChild : tgt;
+      const element = target === null ? this._element.firstElementChild : target;
 
-      target?.addEventListener(eventName, evt, true);
+      element?.addEventListener(eventName, evt, true);
     });
   }
 
@@ -183,86 +188,61 @@ export abstract class Block {
     return element;
   }
 
-  /* public methods */
-  public render(): void { }
-
-  public init(): void { }
-
-  public componentDidMount(): void { }
-
-  public dispatchComponentDidMount(): void {
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
-  }
-
   public getContent(): HTMLElement | undefined {
     return this.element;
   }
 
-  public componentDidUpdate(oldProps: IProps, newProps: IProps): boolean {
-    return true;
-  }
-
   public setProps = (nextProps?: IProps): void => {
-    // if (!nextProps) {
-    //   return;
-    // }
-
-    // // 1 - remove old event handlers
-    // this._removeEvents();
-    // Object.assign(this.props, nextProps);
-    // // this.eventBus().emit(Block.EVENTS.FLOW_CDU, this._meta.propsAndChildren, nextProps); // emit CDU
-    // this.eventBus().emit(Block.EVENTS.FLOW_CDU, this._meta.propsAndChildren, nextProps); // emit CDU
     if (!nextProps) {
       return;
     }
-
+    this._removeEvents();
     Object.assign(this.props, nextProps);
+    this.eventBus().emit(Block.EVENTS.FLOW_CDU, this._meta.propsAndChildren, nextProps);
   };
 
   public show(): void {
-    this.getContent()!.style.display = 'block';
+    this.getContent().style.display = 'block';
   }
 
   public hide(): void {
-    this.getContent()!.style.display = 'none';
+    this.getContent().style.display = 'none';
   }
 
-  public compile(compileTemplate: any, props: IProps): HTMLTemplateElement {
+  public compile(compileTemplate: any, props: IProps): DocumentFragment {
     const propsAndStubs = { ...props };
+
     const { childrenList = [], ...otherChildren } = this.children;
-    // ordinary children
+
     Object.entries(otherChildren).forEach(([key, child]: [string, Block]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
     });
 
-    // childrenList
-    let res = '';
-    let buffer: Block[] | undefined = [];
+    let result = '';
+    let temp: Block[] | undefined = [];
     if (childrenList.length > 0) {
       childrenList.forEach((child: Block) => {
-        res += `<div data-id="${child._id}"></div>`;
+        result += `<div data-id="${child._id}"></div>`;
       });
 
-      buffer = propsAndStubs.childrenList;
-      propsAndStubs.childrenList = res as unknown as Block[];
+      temp = propsAndStubs.childrenList;
+      propsAndStubs.childrenList = result as unknown as Block[];
     }
 
-    // compile template
-    const fragment = this._createDocumentElement('template');
+    const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
     fragment.innerHTML = compileTemplate(propsAndStubs);
 
     const replaceStub = (child: Block): void => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+
       const el = child?.getContent()?.firstElementChild;
       el?.setAttribute('data-id', child._id);
       stub?.replaceWith(el);
     };
 
-    // replace stubs - ordinary children
     Object.values(otherChildren).forEach((child: Block) => replaceStub(child));
 
-    // replace stubs - childrenlist
-    buffer?.forEach((child: Block) => replaceStub(child));
+    temp?.forEach((child: Block) => replaceStub(child));
 
     return fragment.content;
   }

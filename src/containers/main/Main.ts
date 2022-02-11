@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import Anchor from '../../components/anchors/Anchor';
 import ChatFooter from '../../components/chat-footer/ChatFooter';
 import ChatHead from '../../components/chat-head/ChatHead';
@@ -21,48 +22,34 @@ class Main extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(mainTemplate, this.props);
   }
 }
 
 const onClick = (id: number): void => {
-  const newDialogListProps = dialogListProps.map(
-    (dialog) => {
-      if (dialog.id === id) {
-        // eslint-disable-next-line no-param-reassign
-        dialog.active = true;
-        return dialog;
-      }
-      // eslint-disable-next-line no-param-reassign
-      dialog.active = false;
-      return dialog;
-    },
-  );
-  const newMessageListProps = new MessagesList({
-    childrenList: newDialogListProps.filter((dialog) => dialog.active)[0].messagesList.length !== 0
-      ? newDialogListProps.filter((dialog) => dialog.active)[0].messagesList.map((message) => new Message(message))
-      : [new NoMessages({})],
-  });
-
-  // eslint-disable-next-line no-use-before-define
-  mainPage.setProps(
-    {
-      dialogs: new DialogList({
-        childrenList: newDialogListProps.map((dialog) => new Dialog({ ...dialog, events: { click: () => onClick(dialog.id) } })),
-      }),
-      messagesList: newMessageListProps,
-    },
-  );
+  for (let i = 0; i < childrenListDialogs.length; i++) {
+    if (i === id - 1) {
+      childrenListDialogs[i].setProps({ ...dialogListProps[i], active: true });
+    } else {
+      childrenListDialogs[i].setProps({ ...dialogListProps[i], active: false });
+    }
+  }
 };
+
+const childrenListDialogs = dialogListProps.map((dialog) => new Dialog({ ...dialog, events: { click: () => onClick(dialog.id) } }));
 
 const mainPage: Main = new Main({
   profile: new Anchor({ href: 'profile.html', text: 'Профиль' }),
   dialogs: new DialogList({
-    childrenList: dialogListProps.map((dialog) => new Dialog({ ...dialog, events: { click: () => onClick(dialog.id) } })),
+    childrenList: childrenListDialogs,
   }),
-  // eslint-disable-next-line max-len
-  messagesList: new MessagesList({ childrenList: dialogListProps.filter((dialog) => dialog.active)[0].messagesList.length !== 0 ? dialogListProps.filter((dialog) => dialog.active)[0].messagesList.map((message) => new Message(message)) : [new NoMessages({})] }),
+  messagesList: new MessagesList({
+    childrenList:
+      dialogListProps.filter((dialog) => dialog.active)[0].messagesList.length !== 0
+        ? dialogListProps.filter((dialog) => dialog.active)[0].messagesList.map((message) => new Message(message))
+        : [new NoMessages({})],
+  }),
   chatHead: new ChatHead({ avatar: 'https://www.tadviser.ru/images/thumb/5/5f/Steve-jobs.jpg/250px-Steve-jobs.jpg', name: 'Steve Jobs' }),
   chatFooter: new ChatFooter({ inputMessage: new Input(inputMessageProps), sendMessage: new DivWithEvents(sendButtonProps) }),
 });
@@ -70,5 +57,5 @@ const mainPage: Main = new Main({
 const app: HTMLElement | null = document.getElementById('app');
 if (app !== null) {
   app.innerHTML = '';
-  app.appendChild(mainPage.render());
+  app.appendChild(mainPage.getContent());
 }

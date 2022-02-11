@@ -7,7 +7,7 @@ class IndexPage extends Block {
     super('div', props);
   }
 
-  public render(): HTMLElement {
+  public render(): DocumentFragment {
     return this.compile(indexTemplate, this.props);
   }
 }

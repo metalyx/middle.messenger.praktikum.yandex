@@ -16,7 +16,8 @@
     "import/no-unresolved": "off",
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "no-plusplus": "off"
   },
   "env": {
     "browser": true

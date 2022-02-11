@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "./node_modules/.bin/parcel ./src/static/pages/*.html",
     "build": "./node_modules/.bin/parcel build ./src/static/pages/*.html",
-    "start": "./node_modules/.bin/parcel build ./src/static/pages/index.html && node server.js"
+    "start": "./node_modules/.bin/parcel build ./src/static/pages/*.html && node server.js"
   },
   "repository": {
     "type": "git",

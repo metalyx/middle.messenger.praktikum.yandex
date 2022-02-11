@@ -7,7 +7,7 @@ class DialogList extends Block {
     super('div', { ...props });
   }
 
-  render(): HTMLElement {
+  render(): DocumentFragment {
     return this.compile(templateDialogList, this.props);
   }
 }
