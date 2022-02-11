@@ -4,9 +4,9 @@
 
 Этот репозиторий и код в нём - учебная проектная работа первого модуля Yandex Practicum. Представляет собой мессенджер.
 
-**На данный момент** проект представляет из себя несколько сверстанных страниц с использованием шаблонизатора [PUG](https://pugjs.org/api/getting-started.html). 
+**На данный момент** проект представляет из себя несколько страниц, генерируемых на клиенте. В качестве шаблонизатора - [PUG](https://pugjs.org/api/getting-started.html). 
 
-Посмотреть проект можно здесь: [Netlify](https://wonderful-mayer-44e72d.netlify.app/).
+Посмотреть проект можно здесь: [Netlify](https://6206aa8644619b2a4b916a00--wonderful-mayer-44e72d.netlify.app/).
 
 Использовался макет, предоставленный Яндексом: [Figma](https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1).
 
