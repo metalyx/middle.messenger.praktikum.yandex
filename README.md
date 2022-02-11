@@ -1,4 +1,4 @@
-Ссылка на PULL REQUEST 1 sprint: https://github.com/metalyx/middle.messenger.praktikum.yandex/pull/4
+Ссылка на PULL REQUEST 2 sprint: https://github.com/metalyx/middle.messenger.praktikum.yandex/pull/4
 
 ## Описание
 
