@@ -115,20 +115,26 @@ export abstract class Block {
   }
 
   private _render(): void {
-    const block = this.render() as unknown as Element;
+    // const block = this.render() as unknown as Element;
 
-    if (block !== undefined) {
-      const tgt = document.querySelector(`[data-id="${this._element.getAttribute('data-id')!}"]`);
+    // if (block !== undefined) {
+    //   const tgt = document.querySelector(`[data-id="${this._element.getAttribute('data-id')!}"]`);
+    //   if (tgt === null) {
+    //     this._element.innerHTML = '';
+    //     this._element.appendChild(block);
+    //   } else {
+    //     block.firstElementChild!.setAttribute('data-id', tgt.getAttribute('data-id')!);
+    //     tgt.parentNode?.replaceChild(block, tgt);
+    //   }
+    //   this._addEvents(); // add new event handlers
+    // }
+    const fragment = this.render();
 
-      if (tgt === null) {
-        this._element.innerHTML = '';
-        this._element.appendChild(block);
-      } else {
-        block.firstElementChild!.setAttribute('data-id', tgt.getAttribute('data-id')!);
-        tgt.parentNode?.replaceChild(block, tgt);
-      }
-      this._addEvents(); // add new event handlers
-    }
+    this._removeEvents();
+    this._element.innerHTML = '';
+
+    this._element.appendChild(fragment);
+    this._addEvents();
   }
 
   private _addEvents(): void {
@@ -140,7 +146,6 @@ export abstract class Block {
 
       const target = tgt === null ? this._element.firstElementChild : tgt;
 
-      console.log(eventName, target);
       target?.addEventListener(eventName, evt, true);
     });
   }
@@ -197,15 +202,21 @@ export abstract class Block {
     return true;
   }
 
-  public setProps = (nextProps: IProps): void => {
-    if (nextProps === undefined) {
+  public setProps = (nextProps?: IProps): void => {
+    // if (!nextProps) {
+    //   return;
+    // }
+
+    // // 1 - remove old event handlers
+    // this._removeEvents();
+    // Object.assign(this.props, nextProps);
+    // // this.eventBus().emit(Block.EVENTS.FLOW_CDU, this._meta.propsAndChildren, nextProps); // emit CDU
+    // this.eventBus().emit(Block.EVENTS.FLOW_CDU, this._meta.propsAndChildren, nextProps); // emit CDU
+    if (!nextProps) {
       return;
     }
 
-    // 1 - remove old event handlers
-    this._removeEvents();
     Object.assign(this.props, nextProps);
-    this.eventBus().emit(Block.EVENTS.FLOW_CDU, this._meta.propsAndChildren, nextProps); // emit CDU
   };
 
   public show(): void {
@@ -219,7 +230,6 @@ export abstract class Block {
   public compile(compileTemplate: any, props: IProps): HTMLTemplateElement {
     const propsAndStubs = { ...props };
     const { childrenList = [], ...otherChildren } = this.children;
-
     // ordinary children
     Object.entries(otherChildren).forEach(([key, child]: [string, Block]) => {
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`;

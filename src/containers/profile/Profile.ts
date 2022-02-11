@@ -5,7 +5,6 @@ import Anchor from '../../components/anchors/Anchor';
 import profileTemplate from './Profile.pug';
 
 import CHANGE_FIELD_PROPS from './constants/changeFieldsProps';
-import CHANGE_PASSWORD_PROPS from './constants/changePasswordProps';
 import FIELD_DISPLAY_NAME_PROPS from './constants/fieldDisplayNameProps';
 
 import FORM_PROFILE_PROPS from './constants/formProfileProps';

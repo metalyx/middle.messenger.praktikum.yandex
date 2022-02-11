@@ -3,6 +3,7 @@ import FormChangePasswords from '../../components/form-change-passwords/FormChan
 import Input from '../../components/input/Input';
 import { Block, IProps } from '../../core/block/Block';
 import changePasswordsTemplate from './ChangePasswords.pug';
+import INPUT_REPEAT_PASSWORD_PROPS from '../../utils/global-constants/input-repeat-password-props';
 import INPUT_PASSWORD_PROPS from '../../utils/global-constants/input-password-props';
 import SAVE_BUTTON_PROPS from './constants/saveButtonProps';
 
@@ -25,7 +26,7 @@ const formChangePasswordPorps = {
   formName: 'change-password',
   password: new Input(INPUT_PASSWORD_PROPS),
   repeatPassword: new Input({
-    ...INPUT_PASSWORD_PROPS, placeholder: 'Повторите пароль', id: 'repeat-password', name: 'repeat-password',
+    ...INPUT_REPEAT_PASSWORD_PROPS, placeholder: 'Повторите пароль', id: 'repeat-password', name: 'repeat-password',
   }),
   saveButton: new Button(SAVE_BUTTON_PROPS),
   events: {

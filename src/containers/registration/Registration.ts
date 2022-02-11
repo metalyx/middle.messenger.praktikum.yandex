@@ -16,6 +16,7 @@ import INPUT_PASSWORD_PROPS from '../../utils/global-constants/input-password-pr
 import INPUT_NAME_PROPS from '../../utils/global-constants/input-name-props';
 import INPUT_SURNAME_PROPS from '../../utils/global-constants/input-surname-props';
 import INPUT_PHONE_PROPS from '../../utils/global-constants/input-phone-props';
+import INPUT_REPEAT_PASSWORD_PROPS from '../../utils/global-constants/input-repeat-password-props';
 
 import '../sign-in/SignIn.scss';
 import './Registration.scss';
@@ -40,7 +41,7 @@ const registrationPage = new Registration({
     inputSurname: new Input(INPUT_SURNAME_PROPS),
     inputPhone: new Input(INPUT_PHONE_PROPS),
     inputPassword: new Input(INPUT_PASSWORD_PROPS),
-    inputPasswordRepeat: new Input(INPUT_PASSWORD_PROPS),
+    inputPasswordRepeat: new Input(INPUT_REPEAT_PASSWORD_PROPS),
     buttonRegister: new Button(BUTTON_REGISTER_PROPS),
     anchorLogin: new Anchor(ANCHOR_LOGIN_PROPS),
   }),

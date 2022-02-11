@@ -1,0 +1,451 @@
+@import '../../styles/normalize.scss';
+@import '../../styles/variables/all.scss';
+
+.main-wrapper {
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+
+
+  display: flex;
+
+  font-family: 'Inter-Regular';
+
+  .chat-list-wrapper {
+    width: 310px;
+    background-color: $color--light-gray;
+    height: 100%;
+    border-right: 1px solid $color--border-gray;
+
+    .head {
+      width: 100%;
+      height: 100px;
+
+      .profile {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        a {
+          color: $color--gray-main;
+          font-size: 12px;
+          cursor: pointer;
+        }
+
+        a::after {
+          margin-left: 8px;
+          margin-right: 10px;
+          content: '>';
+        }
+      }
+
+      .search {
+        box-sizing: border-box;
+        width: calc(100% - 20px);
+        margin-left: 10px;
+        margin-top: 22px;
+        background-color: $color--basic-gray;
+        border-radius: 5px;
+        height: 32px;
+
+        font-size: 12px;
+        font-family: 'Inter-Regular';
+        color: $color--gray-main;
+        
+        @include flex--center;
+        cursor: pointer;
+      }
+    }
+
+    .chat-list {
+      width: 100%;
+      height: calc(100% - 100px);
+      overflow-y: scroll;
+      overflow-x: visible;
+      z-index: 1000;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+
+        li.dialog {
+          display: flex;
+          height: 70px;
+          width: calc(100% - 20px);
+          margin-left: 10px;
+          border-top: 1px solid $color--border-gray;
+          cursor: pointer;
+
+          animation-name: unhover;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+
+          .dialog-avatar {
+            width: 47px;
+            height: 47px;
+            border-radius: 100%;
+            background-color: $color--basic-gray;
+            margin: auto 0;
+            overflow: hidden;
+
+            img {
+              overflow: hidden;
+              width: 47px;
+              height: 47px;
+              object-fit: cover;
+            }
+          }
+
+          .dialog-main {
+            margin-left: 10px;
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            width: 193px;
+
+            .dialog-main-name {
+              font-family: 'Inter-Regular';
+              font-style: normal;
+              font-weight: 600;
+              font-size: 13px;
+              line-height: 13px;
+            }
+
+            .dialog-main-message {
+              font-family: 'Inter-Regular';
+              font-style: normal;
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 15px;
+              color: $color--gray-main;
+              margin-top: 4px;
+              margin-bottom: 10px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+
+          .dialog-last {
+            display: flex;
+            flex-direction: column;
+            margin-top: 12px;
+
+            .dialog-last-time {
+              font-family: 'Inter-Regular';
+              font-style: normal;
+              font-weight: 500;
+              font-size: 11px;
+              line-height: 13px;
+              text-align: right;
+              color: $color--gray-main;
+            }
+
+            .dialog-last-amount {
+              background-color: $color--blue;
+              width: 20px;
+              height: 20px;
+              border-radius: 100%;
+              margin-top: 14px;
+
+              font-family: 'Inter-Regular';
+              font-style: normal;
+              font-weight: 500;
+              font-size: 11px;
+              line-height: 12px;
+              text-align: center;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: $color--white;
+            }
+          }
+        }
+
+        li.dialog:hover {
+          animation-name: hover;
+          animation-duration: 0.2s;
+          animation-fill-mode: forwards;
+        }
+
+        li.dialog.active {
+          background-color: $color--gray-active !important;
+          animation-name: none;
+        }
+      }
+    }
+
+    .chat-list::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  .chat-dialog-wrapper {
+    width: calc(100% - 310px);
+    background-color: $color--white;
+
+    .head {
+      width: calc(100% - 40px);
+      height: 54px;
+      margin: 0 20px;
+      border-bottom: 1px solid $color--border-gray;
+      box-sizing: border-box;
+      display: flex;
+
+      .chat-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 100%;
+        background-color: $color--basic-gray;
+        margin: auto 0;
+        cursor: pointer;
+
+        img {
+          width: 34px;
+          height: 34px;
+          overflow: hidden;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .chat-name {
+        margin: auto 0;
+        margin-left: 10px;
+
+        font-family: 'Inter-Regular';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 13px;
+        color: $color--black-special;
+
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: calc(100% - 70px);
+        
+        span {
+          cursor: pointer;
+        }
+      }
+
+      .chat-settings {
+        @include flex--center;
+        cursor: pointer;
+      }
+
+      .chat-settings::after {
+        content: '\2807';
+        font-size: 25px;
+        text-align: right;
+      }
+    }
+
+    .main {
+      width: 100%;
+      height: calc(100% - 54px - 76px);
+      padding-top: 20px;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Inter-Medium';
+
+      .no-messages {
+        @include flex--center;
+        height: 76vh;
+      }
+
+      .message {
+        max-width: 60vw;
+        min-width: 100px;
+        display: flex;
+        // flex-direction: column;
+        box-sizing: border-box;
+        margin-left: 20px;
+        margin-bottom: 10px;
+
+        span.message-span {
+          display: block;
+          padding: 11px;
+          background-color: $color--gray-message;
+          border-radius: 12px 12px 0px 12px;
+          font-size: 12px;
+          line-height: 15px;
+          width: fit-content;
+          img {
+            max-width: 495px;
+            border-radius: 12px 12px 0px 12px;
+          }
+        }
+
+        span.time-span {
+          z-index: 998;
+          align-self: flex-end;
+          background: rgba(82, 82, 82, 0.5);
+          color: $color--white;
+          font-family: 'Inter-Regular';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 9px;
+          line-height: 9px;
+          text-align: right;
+          width: 37px;
+          height: 13px;
+          @include flex--center;
+          border-radius: 30px 30px 30px 0px;
+        }
+
+        span.no-bc {
+          background-color: $color--white;
+          padding: 0;
+          height: fit-content;
+        }
+
+        span.no-bc ~ span.time-span {
+          margin-bottom: 4px;
+        }
+      }
+
+      .user-message {
+        min-width: 100px;
+        display: flex;
+        box-sizing: border-box;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        align-self: flex-end;
+        flex-direction: row-reverse;
+
+        span.message-span {
+          display: block;
+          padding: 11px;
+          background-color: $color--blue;
+          border-radius: 12px 12px 12px 0px;
+          font-size: 12px;
+          line-height: 15px;
+          color: $color--white;
+          width: fit-content;
+          img {
+            max-width: 495px;
+            border-radius: 12px 12px 12px 0px;
+          }
+        }
+
+        span.time-span {
+          z-index: 998;
+          align-self: flex-end;
+          background: rgba(82, 82, 82, 0.5);
+          color: $color--white;
+          font-family: 'Inter-Regular';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 9px;
+          line-height: 9px;
+          text-align: right;
+          width: 37px;
+          height: 13px;
+          @include flex--center;
+          border-radius: 30px 30px 0px 30px;
+        }
+
+        span.no-bc {
+          background-color: $color--white;
+          padding: 0;
+          height: fit-content;
+        }
+
+        span.no-bc ~ span.time-span {
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .main::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .footer {
+      width: calc(100% - 40px);
+      margin-left: 20px;
+      
+      height: 54px;
+      border-top: 1px solid $color--border-gray;
+      display: flex;
+
+      .footer-add-file {
+        @include flex--center;
+      }
+
+      .footer-add-file::after {
+        content: '+';
+        font-family: 'Inter-Regular';
+        font-size: 24px;
+        line-height: 32px;
+        color: $color--gray-main;
+      }
+
+      .footer-message {
+        margin-left: 10px;
+        width: calc(100% - 54px);
+
+        input {
+          background-color: $color--basic-gray;
+          border-radius: 30px;
+          height: 32px;
+          width: calc(100% - 62px + 20px);
+          margin-top: 10px;
+          padding-left: 20px;
+          display: flex;
+          align-items: center;
+          font-family: 'Inter-Regular';
+          font-size: 12px;
+        }
+      }
+
+      .footer-send {
+        width: 28px;
+        height: 28px;
+        margin-top: 10px;
+        border-radius: 100%;
+        background-color: $color--blue;
+        @include flex--center;
+        cursor: pointer;
+      }
+      .footer-send::after {
+        content: '\2794';
+        font-size: 18px;
+        color: $color--white;
+      }
+    }
+  }
+
+}
+
+@keyframes hover {
+  0% {
+    background-color: inherit;
+    transform: scale(1);
+    z-index: 0;
+  }
+
+  100% {
+    background-color: $color--gray;
+    transform: scale(0.93) ;
+    z-index: 999;
+  }
+}
+
+@keyframes unhover {
+  0% {
+    background-color: $color--gray;
+    transform: scale(0.93);
+    z-index: 999;
+  }
+
+  100% {
+    background-color: inherit;
+    transform: scale(1);
+    z-index: 0;
+  }
+}

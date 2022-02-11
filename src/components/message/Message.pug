@@ -1,0 +1,18 @@
+if userMessage == true
+  .user-message
+    if img
+      span.message-span.no-bc
+        img(src= img)
+      span.time-span= time
+    else
+      span.message-span= text
+      span.time-span= time
+else
+  .message
+    if img
+      span.message-span.no-bc
+        img(src= img)
+      span.time-span= time
+    else
+      span.message-span= text
+      span.time-span= time
