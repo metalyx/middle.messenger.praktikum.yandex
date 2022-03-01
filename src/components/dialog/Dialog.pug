@@ -1,0 +1,28 @@
+if active === true
+  li.dialog.active
+    .dialog-avatar
+      if src
+        img(src= src)
+      else
+        img(src='https://www.racingpal.ru/images/nouser.png')
+    .dialog-main
+      .dialog-main-name= name
+      .dialog-main-message= message
+    .dialog-last
+      .dialog-last-time= messageLastTime
+      if amount !== 0
+        .dialog-last-amount= amount
+else if active === false
+  li.dialog
+    .dialog-avatar
+      if src
+        img(src= src)
+      else
+        img(src='https://www.racingpal.ru/images/nouser.png')
+    .dialog-main
+      .dialog-main-name= name
+      .dialog-main-message= message
+    .dialog-last
+      .dialog-last-time= messageLastTime
+      if amount !== 0
+        .dialog-last-amount= amount

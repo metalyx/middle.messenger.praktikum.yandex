@@ -1,0 +1,16 @@
+.main-wrapper
+  section.chat-list-wrapper
+    .head
+      .profile
+        != profile
+      .search Поиск
+    .chat-list
+      ul
+        != dialogs
+  section.chat-dialog-wrapper
+    div
+      != chatHead
+    .main
+      != messagesList
+    div
+      != chatFooter

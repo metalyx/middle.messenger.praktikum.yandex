@@ -1,0 +1,35 @@
+if classNameWrapper
+  div(class= classNameWrapper)
+    if label
+      label(for= id) #{label}
+    input(
+      id= id
+      type= type
+      name= name
+      placeholder= placeholder
+      required= required
+      pattern= pattern
+      maxLength= maxLength
+      minLength= minLength
+      class= className
+      disabled= disabled
+    )
+    if error
+      div(class='input-error hidden') #{error}
+else
+  div(class='input_wrapper')
+    label(for= id) #{label}
+    input(
+      id= id
+      type= type
+      name= name
+      placeholder= placeholder
+      required= required
+      pattern= pattern
+      maxLength= maxLength
+      minLength= minLength
+      class= className
+      disabled= disabled
+    )
+    if error
+      div(class='input-error hidden') #{error}

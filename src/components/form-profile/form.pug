@@ -1,0 +1,18 @@
+form(
+  id= formId
+  name= formName
+)
+  section.profile-fields
+    ul.profile-fields-list
+      != fieldEmail
+      != fieldLogin
+      != fieldName
+      != fieldSurname
+      != fieldDisplayName
+      != fieldPhone
+
+  section.change-profile
+    ul.profile-buttons
+      != changeFields
+      != changePassword
+      != logout

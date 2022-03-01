@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "font-family-no-missing-generic-family-keyword": null,
+    "string-quotes": "single",
+    "scss/at-import-partial-extension": null,
+    "no-descending-specificity": null,
+    "scss/at-mixin-pattern": null,
+    "scss/dollar-variable-pattern": null,
+    "selector-class-pattern": null
+  }
+}
