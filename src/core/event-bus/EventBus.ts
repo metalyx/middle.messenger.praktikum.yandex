@@ -1,8 +1,6 @@
-type listenerFunc = (...args: any) => void;
+type ListenerFunc = (...args: any) => void;
 
-interface IListener {
-  [key: string]: listenerFunc[];
-}
+type IListener = Record<string, ListenerFunc[]>
 
 class EventBus {
   listeners: IListener;
@@ -11,7 +9,7 @@ class EventBus {
     this.listeners = {};
   }
 
-  on(event: string, callback: listenerFunc) {
+  on(event: string, callback: ListenerFunc) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -19,13 +17,13 @@ class EventBus {
     this.listeners[event].push(callback);
   }
 
-  off(event: string, callback: listenerFunc) {
+  off(event: string, callback: ListenerFunc) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
 
     this.listeners[event] = this.listeners[event].filter(
-      (listener: listenerFunc) => listener !== callback,
+      (listener: ListenerFunc) => listener !== callback,
     );
   }
 
@@ -34,7 +32,7 @@ class EventBus {
       throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event].forEach((listener: listenerFunc) => {
+    this.listeners[event].forEach((listener: ListenerFunc) => {
       listener(...args);
     });
   }

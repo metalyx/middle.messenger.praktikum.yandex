@@ -3,14 +3,15 @@ import { v4 as uuidv4 } from 'uuid';
 import EventBus from '../event-bus/EventBus';
 import deepEqual from '../../utils/helpers/deepEqual';
 
+// eslint-disable-next-line no-unused-vars
+type FuncWithEvent = (e?: Event) => void;
 export interface IProps {
-  // eslint-disable-next-line no-unused-vars
-  events?: { [key: string]: (e?: Event) => void }
+  events?: Record<string, FuncWithEvent>
   childrenList?: Block[]
   [index: string]: any
 }
 
-interface IChildrenSimple { [childName: string]: Block }
+type IChildrenSimple = Record<string, Block>;
 interface IChildrenList { childrenList?: Block[] }
 type IChildren = IChildrenSimple & IChildrenList
 
@@ -210,12 +211,12 @@ export class Block {
   }
 
   public compile(compileTemplate: any, props: IProps): DocumentFragment {
-    const propsAndStubs = { ...props };
+    const propsAndChildren = { ...props };
 
     const { childrenList = [], ...otherChildren } = this.children;
 
     Object.entries(otherChildren).forEach(([key, child]: [string, Block]) => {
-      propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
+      propsAndChildren[key] = `<div data-id="${child._id}"></div>`;
     });
 
     let result = '';
@@ -225,12 +226,12 @@ export class Block {
         result += `<div data-id="${child._id}"></div>`;
       });
 
-      temp = propsAndStubs.childrenList;
-      propsAndStubs.childrenList = result as unknown as Block[];
+      temp = propsAndChildren.childrenList;
+      propsAndChildren.childrenList = result as unknown as Block[];
     }
 
     const fragment = this._createDocumentElement('template') as HTMLTemplateElement;
-    fragment.innerHTML = compileTemplate(propsAndStubs);
+    fragment.innerHTML = compileTemplate(propsAndChildren);
 
     const replaceStub = (child: Block): void => {
       const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);

@@ -28,8 +28,9 @@ class Main extends Block {
 }
 
 const onClick = (id: number): void => {
-  for (let i = 0; i < childrenListDialogs.length; i++) {
-    if (i === id - 1) {
+  // Цикл начинаем от одного, т.к. id диалогов начинаются с 1
+  for (let i = 1; i < childrenListDialogs.length; i++) {
+    if (i === id) {
       childrenListDialogs[i].setProps({ ...dialogListProps[i], active: true });
     } else {
       childrenListDialogs[i].setProps({ ...dialogListProps[i], active: false });

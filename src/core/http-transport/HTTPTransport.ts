@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars, no-shadow */
-enum METHODS {
+enum Methods {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -20,36 +20,34 @@ function queryStringify(data: Object): string {
 }
 
 interface IOptions {
-  method?: METHODS
+  method?: Methods
   headers?: Record<string, string>
   timeout?: number
   data?: unknown
 }
 
-interface IRequest {
-  [key: string]: string | number
-}
+type IRequest = Record<string, string | number>;
 
 class HTTPTransport {
-  get = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.GET });
+  get = (url: string, options = {}) => this.request(url, { ...options, method: Methods.GET });
 
-  post = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.POST });
+  post = (url: string, options = {}) => this.request(url, { ...options, method: Methods.POST });
 
-  put = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.PUT });
+  put = (url: string, options = {}) => this.request(url, { ...options, method: Methods.PUT });
 
-  delete = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.DELETE });
+  delete = (url: string, options = {}) => this.request(url, { ...options, method: Methods.DELETE });
 
-  patch = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.PATCH });
+  patch = (url: string, options = {}) => this.request(url, { ...options, method: Methods.PATCH });
 
   request = (url: string, options: IOptions = {}) => {
     const {
       headers = {},
-      method = METHODS.GET,
+      method = Methods.GET,
       data,
       timeout = 3000,
     } = options;
 
-    const queryParams: string = method === METHODS.GET ? queryStringify(data as IRequest) : '';
+    const queryParams: string = queryStringify(data as IRequest);
 
     return new Promise<XMLHttpRequest>((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -68,7 +66,7 @@ class HTTPTransport {
       xhr.timeout = timeout;
       xhr.ontimeout = reject;
 
-      if (method === METHODS.GET || data === undefined) {
+      if (method === Methods.GET || data === undefined) {
         xhr.send();
       } else {
         xhr.send(JSON.stringify(data));

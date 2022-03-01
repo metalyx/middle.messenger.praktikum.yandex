@@ -21,7 +21,7 @@ class ChangePasswords extends Block {
   }
 }
 
-const formChangePasswordPorps = {
+const formChangePasswordProps = {
   formId: 'change-password',
   formName: 'change-password',
   password: new Input(INPUT_PASSWORD_PROPS),
@@ -36,7 +36,7 @@ const formChangePasswordPorps = {
 
 const pageProps = {
   displayName: 'Имя',
-  changePasswordForm: new FormChangePasswords(formChangePasswordPorps),
+  changePasswordForm: new FormChangePasswords(formChangePasswordProps),
 };
 
 const changePasswordsPage = new ChangePasswords(pageProps);
@@ -46,3 +46,5 @@ if (app !== null) {
   app.innerHTML = '';
   app.appendChild(changePasswordsPage.getContent());
 }
+
+export default changePasswordsPage;
